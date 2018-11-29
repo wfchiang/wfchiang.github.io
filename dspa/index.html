@@ -1,0 +1,112 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="../css/format.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://wfchiang.github.io/dspa/dspa-20181128.js"></script>
+
+  <title>DSPA</title>
+
+  <script>
+    let app = angular.module('dspa', []);
+
+    app.controller('ctrlDspa', function ($scope) {
+
+      $scope.DSPA = DSPA;
+
+      this.$onInit = function () {
+        $scope.dspaSpec = '';
+        $scope.dspaData = '';
+        $scope.dspaResult = '';
+      };
+
+      $scope.formatJson = function () {
+        try {
+          $scope.dspaSpec = $scope.DSPA.printObject(JSON.parse($scope.dspaSpec), 4);
+        } catch (ex) {
+          console.error(String(ex)); 
+        }
+        try {
+          $scope.dspaData = $scope.DSPA.printObject(JSON.parse($scope.dspaData), 4);
+        } catch (ex) {
+          console.error(String(ex)); 
+        }
+        try {
+          $scope.dspaResult = $scope.DSPA.printObject(JSON.parse($scope.dspaResult), 4);
+        } catch (ex) {
+          console.error(String(ex));
+        }
+      };
+
+      $scope.dspaValidate = function () {
+        try {
+          let dataObj = JSON.parse($scope.dspaData);
+          let specObj = JSON.parse($scope.dspaSpec);
+          let resultObj = $scope.DSPA.validateDataWithSpec(dataObj, specObj).toJSON(); 
+          $scope.dspaResult = $scope.DSPA.printObject(resultObj, 4); 
+          $scope.formatJson(); 
+        } catch (ex) {
+          console.error(String(ex)); 
+        }
+      }; 
+
+      $scope.applyTest = function (spec, data) {
+        $scope.dspaSpec = DSPA.printObject(spec, 4); 
+        $scope.dspaData = DSPA.printObject(data, 4); 
+        $scope.dspaResult = ''; 
+        $scope.formatJson(); 
+      }; 
+
+      // Test cases 
+      $scope.testSpec0 = {"__type__": "object","__children__": {"123": {"__type__": "string"}}};
+      $scope.testData0 = {"123":"456"}; 
+      $scope.testJudge0 = true; 
+    });  
+  </script>
+</head>
+
+<body>
+  <h1>Don't ask why it is called DSPA, please.</h1>
+  <hr/>
+  <div ng-app="dspa" ng-controller="ctrlDspa">
+    <table>
+      <tr>
+        <td><b>Spec</b></td>
+        <td><b>Data</b></td>
+        <td><b>Validation Result</b></td>
+      </tr>
+      <tr>
+        <td><textarea ng-model="dspaSpec" class="json"></textarea></td>
+        <td><textarea ng-model="dspaData" class="json"></textarea></td>
+        <td><textarea ng-model="dspaResult" class="json"></textarea></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><button ng-click="formatJson()">Format</button></td>
+        <td><button ng-click="dspaValidate()">Validate</button></td>
+        <td></td>
+      </tr>
+    </table>
+    
+    <hr/>
+
+    <!-- Sample test cases -->
+    <table border=1>
+      <tr>
+        <td></td>
+        <td><b>Sample Test Spec</b></td>
+        <td><b>Sample Test Data</b></td>
+        <td><b>Expected Validation Result</b></td>
+      </tr>
+      <tr>
+        <td><button ng-click="applyTest(testSpec0, testData0)">Apply</button></td>
+        <td><pre>{{ DSPA.printObject(testSpec0,4) }}</pre></td>
+        <td><pre>{{ DSPA.printObject(testData0,4) }}</pre></td>
+        <td><pre>{{ testJudge0 }}</pre></td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
