@@ -24,12 +24,12 @@
         try {
           $scope.dspaSpec = $scope.DSPA.printObject(JSON.parse($scope.dspaSpec), 4);
         } catch (ex) {
-          console.error(String(ex)); 
+          console.error(String(ex));
         }
         try {
           $scope.dspaData = $scope.DSPA.printObject(JSON.parse($scope.dspaData), 4);
         } catch (ex) {
-          console.error(String(ex)); 
+          console.error(String(ex));
         }
         try {
           $scope.dspaResult = $scope.DSPA.printObject(JSON.parse($scope.dspaResult), 4);
@@ -42,32 +42,73 @@
         try {
           let dataObj = JSON.parse($scope.dspaData);
           let specObj = JSON.parse($scope.dspaSpec);
-          let resultObj = $scope.DSPA.validateDataWithSpec(dataObj, specObj).toJSON(); 
-          $scope.dspaResult = $scope.DSPA.printObject(resultObj, 4); 
-          $scope.formatJson(); 
+          let resultObj = $scope.DSPA.validateDataWithSpec(dataObj, specObj).toJSON();
+          $scope.dspaResult = $scope.DSPA.printObject(resultObj, 4);
+          $scope.formatJson();
         } catch (ex) {
-          console.error(String(ex)); 
+          console.error(String(ex));
         }
-      }; 
+      };
 
       $scope.applyTest = function (spec, data) {
-        $scope.dspaSpec = DSPA.printObject(spec, 4); 
-        $scope.dspaData = DSPA.printObject(data, 4); 
-        $scope.dspaResult = ''; 
-        $scope.formatJson(); 
-      }; 
+        $scope.dspaSpec = DSPA.printObject(spec, 4);
+        $scope.dspaData = DSPA.printObject(data, 4);
+        $scope.dspaResult = '';
+        $scope.formatJson();
+      };
 
       // Test cases 
-      $scope.testSpec0 = {"__type__": "object","__children__": {"123": {"__type__": "string"}}};
-      $scope.testData0 = {"123":"456"}; 
-      $scope.testJudge0 = true; 
+      $scope.testSpec0 = { "__type__": "object", "__children__": { "123": { "__type__": "string" } } };
+      $scope.testData0 = { "123": "456" };
+      $scope.testJudge0 = true;
+
+      $scope.testSpec1 = {
+        "__type__": "object",
+        "__predicate__": "return (2.1 <= (self.intKey0 + self.floatKey0));",
+        "__children__": {
+          "strKey0": {
+            "__type__": "string",
+            "__length__": "(0, 100]",
+            "__membership__": ["strV0", "strV1"]
+          },
+          "intKey0": {
+            "__type__": "int",
+            "__range__": "(0, 1]"
+          },
+          "floatKey0": {
+            "__required__": false,
+            "__type__": "float",
+            "__range__": "[1.0, 2.0)",
+            "__predicate__": "return(1.1 <= self);"
+          },
+          "objKey0": {
+            "__required__": false,
+            "__type__": "object",
+            "__children__": {
+              "strKey1": {
+                "__type__": "string",
+                "__length__": 5
+              }
+            }
+          }
+        }
+      };
+      $scope.testData1 = {
+        "strKey0": "strV0",
+        "intKey0": 1,
+        "floatKey0": 1.1,
+        "objKey0": {
+          "strKey1": "strV1"
+        }
+      };
+      $scope.testJudge1 = true;
     });  
   </script>
 </head>
 
 <body>
   <h1>Don't ask why it is called DSPA, please.</h1>
-  <hr/>
+  <hr />
   <div ng-app="dspa" ng-controller="ctrlDspa">
     <table>
       <tr>
@@ -88,8 +129,8 @@
         <td></td>
       </tr>
     </table>
-    
-    <hr/>
+
+    <hr />
 
     <!-- Sample test cases -->
     <table border=1>
@@ -101,9 +142,27 @@
       </tr>
       <tr>
         <td><button ng-click="applyTest(testSpec0, testData0)">Apply</button></td>
-        <td><pre>{{ DSPA.printObject(testSpec0,4) }}</pre></td>
-        <td><pre>{{ DSPA.printObject(testData0,4) }}</pre></td>
-        <td><pre>{{ testJudge0 }}</pre></td>
+        <td>
+          <pre>{{ DSPA.printObject(testSpec0,4) }}</pre>
+        </td>
+        <td>
+          <pre>{{ DSPA.printObject(testData0,4) }}</pre>
+        </td>
+        <td>
+          <pre>{{ testJudge0 }}</pre>
+        </td>
+      </tr>
+      <tr>
+        <td><button ng-click="applyTest(testSpec1, testData1)">Apply</button></td>
+        <td>
+          <pre>{{ DSPA.printObject(testSpec1,4) }}</pre>
+        </td>
+        <td>
+          <pre>{{ DSPA.printObject(testData1,4) }}</pre>
+        </td>
+        <td>
+          <pre>{{ testJudge1 }}</pre>
+        </td>
       </tr>
     </table>
   </div>
