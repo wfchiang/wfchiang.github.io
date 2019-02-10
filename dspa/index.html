@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="../css/format.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  <script src="https://wfchiang.github.io/dspa/dspa-20181128.js"></script>
+  <script src="https://wfchiang.github.io/dspa/dspa-20190210.js"></script>
 
   <title>DSPA</title>
 
@@ -40,9 +40,18 @@
 
       $scope.dspaValidate = function () {
         try {
-          let dataObj = JSON.parse($scope.dspaData);
+          let dataObj = {}; 
+          $scope.dspaResult = ''; 
+
+          try {
+            dataObj = JSON.parse($scope.dspaData); 
+          } catch (ex) {
+            dataObj = $scope.dspaData; 
+          }
+
           let specObj = JSON.parse($scope.dspaSpec);
           let resultObj = $scope.DSPA.validateDataWithSpec(dataObj, specObj).toJSON();
+
           $scope.dspaResult = $scope.DSPA.printObject(resultObj, 4);
           $scope.formatJson();
         } catch (ex) {
