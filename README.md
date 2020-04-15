@@ -8,3 +8,14 @@ As a Christian, Jesus Christ is my Shepherd. People who know me personally witne
 As a Software Engineer, I was trained to model business requirements into software solutions. Hands-on implementation is also my strength.
 
 As a "free" software researcher, I love to explore novel ideas in fields like computation model and software testing. 
+
+--- 
+
+### Christian Work 
+
+---
+
+### Software Researcher Work 
+
+#### Davic
+A cloud computation framework. It allows you to configure your cloud service at runtime. [GitHub](https://github.com/wfchiang/davic)
