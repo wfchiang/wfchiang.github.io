@@ -1,3 +1,8 @@
+> Blessed is the man whose strength is in thee; In whose heart are the highways to Zion.
+> Passing through the valley of Weeping they make it a place of springs; Yea, the early rain covereth it with blessings.
+> They go from strength to strength; Every one of them appeareth before God in Zion.
+> O Jehovah God of hosts, hear my prayer; Give ear, O God of Jacob.
+
 Identities of mine: 
 1. Christian
 2. Software Engineer 
