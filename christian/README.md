@@ -12,5 +12,5 @@
 
 * [2020 帖撒罗尼迦前书 查经](2020_1Thessalonians)
 
-* [2020 主日敬拜带领心态](2020_subday_worship_mindset)
+* [2020 主日敬拜带领心态](2020_sunday_worship_mindset)
 
