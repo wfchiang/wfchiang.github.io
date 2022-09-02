@@ -3,24 +3,16 @@
 > They go from strength to strength; Every one of them appeareth before God in Zion.
 > O Jehovah God of hosts, hear my prayer; Give ear, O God of Jacob. [Psalms84:5-8]
 
-Identities of mine: 
-1. Christian
-2. Software Engineer 
-3. "Free" Software Researcher
-
-As a Christian, Jesus Christ is my Shepherd. People who know me personally witness my sin. But I believe Jesus may pardon my sin and accept me in His kingdom. 
-
-As a Software Engineer, I was trained to model business requirements into software solutions. Hands-on implementation is also my strength.
-
-As a "free" software researcher, I love to explore novel ideas in fields like computation model and software testing. 
+I am first being a sinner, then a christian, and then a software enginner. 
 
 --- 
 
-### Christian Work 
+### Work for my Faith 
+
+Entry to my christian work [here (in Chinese)](./christian). 
 
 ---
 
-### Software Researcher Work 
+### Software Engineering 
 
-#### Davic
-A cloud computation framework. It allows you to configure your cloud service at runtime. [GitHub](https://github.com/wfchiang/davic)
+My [Github](https://github.com/wfchiang)
