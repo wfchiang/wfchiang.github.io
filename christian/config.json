@@ -1,12 +1,29 @@
 {
-    "sub_folders": [
+    "writings": [
         {
+            "type": "folder", 
+            "name": "2021 哈巴谷书 查经", 
+            "path": "2021_Habakkuk"
+        }, 
+        {
+            "type": "folder", 
+            "name": "2021 路加福音 查经", 
+            "path": "2021_Luke"
+        }, 
+        {
+            "type": "folder", 
             "name": "2020 门徒训练",
             "path": "2020_discipleship"
         }, 
         {
-            "name": "2020 帖撒罗尼迦前书", 
+            "type": "folder", 
+            "name": "2020 帖撒罗尼迦前书 查经", 
             "path": "2020_1Thessalonians"
+        }, 
+        {
+            "type": "file", 
+            "name": "2020 主日敬拜带领心态", 
+            "path": "2020_subday_worship_mindset" 
         }
     ]
 }
